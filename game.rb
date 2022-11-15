@@ -15,17 +15,28 @@ class Game
       @current_player = @player2
     else 
       @current_player = @player1
+    end
+  end
+
+  def winner
+    if @player1.lives == 0
+    @winner = @player2
+    else 
+      @winner = @player1
+    end
   end
 
   def end_game
-    puts "---GAME OVER---"
-    puts "Goodbye!"
+    puts "------GAME OVER------"
+    puts "#{@winner} wins with a score of #{@winner.lives}/3"
+    puts "------Goodbye!------"
   end
 
   def play
-    while @player1.lives > 0 || player2.lives > 0 do
-
+    while @player1.lives > 0 || @player2.lives > 0 do
+    puts "--------NEW TURN--------"
     Question.generate_question(@current_player)
+    puts "> "
     input = gets.chomp().to_i
   
     if Question.verify_answer(input)
@@ -36,9 +47,10 @@ class Game
     end 
 
     score_message
-    switch_player
-
+    switch_player(@current_player)
+    
     end
+    winner
     end_game
   end
 
