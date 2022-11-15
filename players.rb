@@ -8,7 +8,7 @@ class Player
   end
 
   def lose_life
-    @newlives = @lives - 1
+    @lives -= 1
   end
 
 end
