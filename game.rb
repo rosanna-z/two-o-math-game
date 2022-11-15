@@ -10,6 +10,17 @@ class Game
     puts "P1: #{player1.lives}/3 vs P2: #{player2.lives}/3 \n --NEW TURN--"
   end
 
+  def switch_player
+    if @current_player == @player1
+      @current_player = @player2
+    else 
+      @current_player = @player1
+  end
+
+  def end_game
+    puts "---GAME OVER---"
+    puts "Goodbye!"
+  end
 
   def play
     while @player1.lives > 0 || player2.lives > 0 do
@@ -23,9 +34,12 @@ class Game
       puts "#{@current_player}: Seriously? No!"
       @current_player.lose_life
     end 
-    
-    end
 
+    score_message
+    switch_player
+
+    end
+    end_game
   end
 
 
