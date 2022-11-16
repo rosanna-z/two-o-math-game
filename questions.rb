@@ -1,13 +1,16 @@
 class Question
 
-  def generate_question(current_player)
+  def initialize
     @num1 = rand(20)
     @num2 = rand(20)
-    puts "#{@current_player}: What does #{@num1} plus #{@num2} equal?"
+  end
+
+  def generate_question(current_player)
+    puts "#{current_player.name}: What does #{@num1} plus #{@num2} equal?"
   end
 
   def verify_answer(input)
-    answer == @num1 + @num2
+  input == @num1 + @num2
   end
 
 end
